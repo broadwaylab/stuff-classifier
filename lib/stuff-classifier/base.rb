@@ -152,7 +152,7 @@ class StuffClassifier::Base
     #    :spam => 0.73, :ham => 0.40  (OK)
     #    :spam => 0.80, :ham => 0.70  (Fail, :ham is too close)
 
-    return default unless best
+    return [default, max_prob] unless best
 
     threshold = @thresholds[best] || 1.0
 
@@ -162,7 +162,7 @@ class StuffClassifier::Base
       return default if prob * threshold > max_prob
     end
 
-    return best
+    return [best, max_prob] 
   end
 
   def save_state
