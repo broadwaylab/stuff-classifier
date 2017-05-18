@@ -57,7 +57,7 @@ class StuffClassifier::Tokenizer
         preprocessing_regexps.each { |regexp,replace_by| line.gsub!(regexp, replace_by) }
       end
 
-      Rseg.segment(line).each do |w|
+      line.split(' ').each .each do |w|
         next if w == '' || ignore_words.member?(w.downcase)
 
         if stemming? and stemable?(w)
