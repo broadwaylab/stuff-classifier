@@ -141,6 +141,8 @@ class StuffClassifier::Base
       puts "We do not have a tokenizer: #{tokenizer}"
     end
 
+    puts "About to increment each word.."
+
     @tokenizer.each_word(text).each do |w|
       puts "About to increment: #{w}, #{category}"
       incr_word(w, category)

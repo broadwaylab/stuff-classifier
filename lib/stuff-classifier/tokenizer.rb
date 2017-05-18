@@ -40,6 +40,8 @@ class StuffClassifier::Tokenizer
   end
 
   def each_word(string)
+    puts "Processing string: #{string}"
+
     string = string.strip
     return if string == ''
 
@@ -47,6 +49,8 @@ class StuffClassifier::Tokenizer
 
     # tokenize string
     string.split("\n").each do |line|
+
+      puts "processing line: #{line}"
 
       # Apply preprocessing regexps
       if preprocessing_regexps
@@ -66,6 +70,8 @@ class StuffClassifier::Tokenizer
         words << (block_given? ? (yield w) : w)
       end
     end
+
+    puts "processed string"
 
     return words
   end
