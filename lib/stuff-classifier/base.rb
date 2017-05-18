@@ -141,7 +141,12 @@ class StuffClassifier::Base
       puts "We do not have a tokenizer: #{tokenizer}"
     end
 
-    @tokenizer.each_word(text) {|w| incr_word(w, category) }
+    @tokenizer.each_word(text).each do |w|
+      puts "About to increment: #{w}, #{category}"
+      incr_word(w, category)
+    end
+
+    # @tokenizer.each_word(text) {|w| incr_word(w, category) }
 
     puts "Finished incrementing words.. moving to categories."
 
