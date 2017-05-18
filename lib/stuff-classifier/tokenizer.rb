@@ -1,6 +1,5 @@
 # -*- encoding : utf-8 -*-
 require "lingua/stemmer"
-require "rseg"
 
 class StuffClassifier::Tokenizer
   require  "stuff-classifier/tokenizer/tokenizer_properties"
