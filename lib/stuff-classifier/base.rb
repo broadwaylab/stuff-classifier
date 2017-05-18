@@ -54,7 +54,6 @@ class StuffClassifier::Base
   end
 
   def incr_word(word, category)
-    puts "Incrementing: #{word}, #{category}"
 
     @word_list[word] ||= {}
 
@@ -71,11 +70,9 @@ class StuffClassifier::Base
     @category_list[category][:_total_word] ||= 0
     @category_list[category][:_total_word] += 1
 
-    puts "Finished incrementing word."
   end
 
   def incr_cat(category)
-    puts "Incrementing category: #{category}"
 
     @category_list[category] ||= {}
     @category_list[category][:_count] ||= 0
@@ -84,7 +81,6 @@ class StuffClassifier::Base
     @training_count ||= 0
     @training_count += 1
 
-    puts "Finished incrementing category."
   end
 
   # return number of times the word appears in a category
@@ -133,28 +129,11 @@ class StuffClassifier::Base
 
   # train the classifier
   def train(category, text)
-    puts "Training data.."
-
-    if @tokenizer
-      puts "We have a tokenizer: #{@tokenizer}"
-    else 
-      puts "We do not have a tokenizer: #{tokenizer}"
-    end
-
-    puts "About to increment each word.."
-
     @tokenizer.each_word(text).each do |w|
-      puts "About to increment: #{w}, #{category}"
       incr_word(w, category)
     end
 
-    # @tokenizer.each_word(text) {|w| incr_word(w, category) }
-
-    puts "Finished incrementing words.. moving to categories."
-
     incr_cat(category)
-
-    puts "Finished incrementing categories."
   end
 
   # classify a text
